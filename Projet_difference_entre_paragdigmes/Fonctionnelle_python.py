@@ -7,3 +7,12 @@ recettes = {
     "sandwich salade": ["pain", "beurre", "jambon", "salade"],
 }
 
+def recettes_realisables(ingredients_disponibles, recettes):
+    filtre = filter(lambda recette: all(ing in ingredients_disponibles for ing in recettes[recette]), recettes)
+    return list(map(str.capitalize, filtre))
+
+
+ingredients_utilisateur = {"pain", "beurre", "jambon", "oeufs", "sel", "poivre", "fromage", "herbes"}
+recettes_possibles = recettes_realisables(ingredients_utilisateur, recettes)
+
+print("Recettes réalisables:", recettes_possibles)
